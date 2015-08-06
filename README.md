@@ -16,53 +16,54 @@ IP (URL) | Port
 
 ### User management
 
-- Created user grader who is the only one allowed to login via SSH. Granted
+- Created user *grader* who is the only one allowed to login via SSH. Granted
   permission to sudo.
 
 ### Upgrades
 
-- Installed and configured package unattended-upgrades to automatically install
+- Installed and configured package `unattended-upgrades` to automatically install
   security updates. Non-security updates are regularly checked by Icinga and
   have to be installed manually.
 
 ### Security
 
-- Restricted access to apache root directory, disallowed .htaccess.
-- Configured permission settings of apache directories: App directory and all
-  subdirectories belong to group www-data. Absolutely no rights for others.
-- Disabled apache modules for security reasons: negotiation, setenvif, status,
+- Restricted access to Apache root directory, disallowed .htaccess files.
+- Configured permission settings of Apache directories: App directory and all
+  subdirectories belong to group `www-data`. Absolutely no rights for others.
+- Disabled Apache modules for security reasons: negotiation, setenvif, status,
   autoindex.
 - Restricted request size for upload directory of catalog app.
-- Changed ssh port to 2200 and disallowed root-login.
+- Changed SSH port to 2200 and disallowed root-login.
+- Configured database to disallow remote connections.
 
 ### Monitoring
 
-- Installed and configured fail2ban.
-- Installed and configured icinga.
-- Added icinga user to group adm to be able to read auth.log.
-- Added a nagios plugin to check for failed ssh logins using check_logfile
-- Added icinga service to check for http content
+- Installed and configured `fail2ban`.
+- Installed and configured `icinga`.
+- Added *icinga* user to group `adm` to be able to read auth.log.
+- Added a Nagios plugin to check for failed SSH logins using check_logfile
+- Added Icinga service to check for http content.
 - Configured icinga to accept commands from web console.
 
 ### Apache
 
-- Installed apache2 package, configured timeout in config.
+- Installed `apache2` package, configured timeout in config.
 - Created the appropriate directory structure for the catalog app under
   /var/www.
 - Added virtual host file for catalog app and enabled site.
 - Installed mod_wsgi module.
-- Created a .wsgi script and configured the python load path, so apache can
+- Created a .wsgi script and configured the python load path, so Apache can
   find and get the application object.
 
 ### Database
 
-- Installed package postgresql.
-- Added user postgres to system and created database 'catdb'.
+- Installed package `postgresql`.
+- Added user **postgres** to system and created database 'catdb'.
 - Made a sql dump from the sqlite database and made appropriate changes to be
   read by psql.
-- Added user catalog with encrypted password 'catalog'.
-- Granted login to user catalog in pg_hba.conf.
-- Granted user catalog limited access to catalog database:
+- Added user **catalog** with encrypted password 'catalog'.
+- Granted login to user **catalog** in pg_hba.conf.
+- Granted **catalog** limited access to catalog database:
   - Allowed connecting to database.
   - Allowed selecting on sequences.
   - Allowed selecting, updating, inserting and deleting on tables.
@@ -70,9 +71,9 @@ IP (URL) | Port
 ### Catalog App
 
 - Installed git and cloned repository sports-catalog.
-- Installed python-pip and necessary python modules for the catalog app
+- Installed `python-pip` and necessary python modules for the catalog app
   (flask, sqlalchemy, werkzeug, oauth2client, Jinja2, flask-wtf, psycopg2).
-- Made appropriate changes to flask application to connect to postgresql
+- Made appropriate changes to Flask application to connect to postgresql
   database.
 - Changed IDs on item and image to serial types.
 - Added server IP to urls allowed for OAuth2.
@@ -85,7 +86,7 @@ IP (URL) | Port
 
 ### Miscellaneous
 
-- Installed ntp and set timezone to UTC.
+- Installed `ntp` and set timezone to UTC.
 
 ### Personal modifications
 
