@@ -16,7 +16,7 @@ IP (URL) | Port
 
 ### User management
 
-- Created user *grader* who is the only one allowed to login via SSH. Granted
+- Created user **grader** who is the only one allowed to login via SSH. Granted
   permission to sudo.
 
 ### Upgrades
@@ -29,7 +29,7 @@ IP (URL) | Port
 
 - Restricted access to Apache root directory, disallowed .htaccess files.
 - Configured permission settings of Apache directories: App directory and all
-  subdirectories belong to group `www-data`. Absolutely no rights for others.
+  subdirectories belong to group **www-data**. Absolutely no rights for others.
 - Disabled Apache modules for security reasons: negotiation, setenvif, status,
   autoindex.
 - Restricted request size for upload directory of catalog app.
@@ -40,7 +40,7 @@ IP (URL) | Port
 
 - Installed and configured `fail2ban`.
 - Installed and configured `icinga`.
-- Added *icinga* user to group `adm` to be able to read auth.log.
+- Added **icinga** user to group **adm** to be able to read auth.log.
 - Added a Nagios plugin to check for failed SSH logins using check_logfile
 - Added Icinga service to check for http content.
 - Configured icinga to accept commands from web console.
@@ -58,7 +58,7 @@ IP (URL) | Port
 ### Database
 
 - Installed package `postgresql`.
-- Added user **postgres** to system and created database 'catdb'.
+- Added user **postgres** to system and created database *catdb*.
 - Made a sql dump from the sqlite database and made appropriate changes to be
   read by psql.
 - Added user **catalog** with encrypted password 'catalog'.
